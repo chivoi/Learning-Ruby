@@ -7,7 +7,7 @@ class Account
   end
 
   public
-  def display_balance (pin_number)
+  def display_balance(pin_number)
     if pin_number == pin
       puts "Balance $#{@balance}."
     else
@@ -15,14 +15,18 @@ class Account
     end
   end
 
-  def withdraw (pin_number, amount)
+  def valid?(amount)
+    @balance >= amount
+  end
+
+  def withdraw(pin_number, amount)
     if pin_number == pin
-      @balance -= amount
-        if @balance >= amount
-          puts "Withdrew #{amount}. New balance: $#{@balance}."
-        else
-          puts "Overdraft danger: can't withdraw that much" #how else do I check that the account doesn't get overdrawn?
-        end
+      if valid?(amount)
+        @balance -= amount
+        puts "Withdrew #{amount}. New balance: $#{@balance}."
+      else
+        puts "Overdaft!"
+      end
     else
       puts pin_error
     end
@@ -47,7 +51,7 @@ class Account
   end
 end
 
-checking_account = Account.new("Ana", 300000000)
+checking_account = Account.new("Ana", 30)
 checking_account.display_balance(1234)
 checking_account.withdraw(1234, 500)
-checking_account.deposit(1234, 550)
+checking_account.display_balance(1234)
