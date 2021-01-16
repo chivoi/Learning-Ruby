@@ -1,3 +1,5 @@
+# This programme takes 2 decimal numbers and returns the exclusive or number for them.
+
 def exclusive_or(num1, num2)
 	bin1 = num1.digits(2).reverse
 	bin2 = num2.digits(2).reverse
