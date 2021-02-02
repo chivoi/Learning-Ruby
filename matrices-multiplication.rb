@@ -9,7 +9,7 @@ def multiply_matrix(m1, m2)
     result = (matrix1 * matrix2).to_a
     return result
   else 
-    return "Can't multiply, dimentions not equal!"
+    return "Can't multiply, dimentions not equal."
   end
 end
 
